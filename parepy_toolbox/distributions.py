@@ -20,6 +20,7 @@ def convert_params_to_scipy(dist: str, parameters: dict) -> dict:
         epsilon = np.sqrt(np.log(1 + (parameters['std'] / parameters['mean']) ** 2))
         lambda_ = np.log(parameters['mean']) - 0.5 * epsilon ** 2
         parameters_scipy = {'s': epsilon, 'loc': 0.0, 'scale': np.exp(lambda_)}
+        print(parameters_scipy)
     elif dist.lower() == 'gumbel max':
         gamma = 0.5772156649015329
         alpha = parameters['std'] * np.sqrt(6) / np.pi
